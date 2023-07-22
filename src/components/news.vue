@@ -9,7 +9,7 @@
       </div>
     </div>
     <div v-else>Идет загрузка...</div>
-    <div class="row">
+    <div class="row row_form">
       <div class="col-lg-6 offset-lg-3">
         <div class="block-form">
           <form @submit.prevent>
@@ -19,7 +19,7 @@
             <div class="item-form">
               <input type="text" v-bind:value="body" @input="body = $event.target.value" placeholder="text">
             </div>
-            <button class="btn-main" @click="addNews">add news</button>
+            <button class="btn-main" @click="addNews">Add news</button>
           </form>
         </div>
       </div>
