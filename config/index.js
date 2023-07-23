@@ -8,7 +8,7 @@ module.exports = {
   dev: {
 
     // Paths
-    assetsSubDirectory: 'static',
+    assetsSubDirectory: './static',
     assetsPublicPath: '/',
     proxyTable: {},
 
@@ -42,8 +42,8 @@ module.exports = {
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: 'VueProject/static',
-    assetsPublicPath: 'VueProject/',
+    assetsSubDirectory: './static',
+    assetsPublicPath: '/',
 
     /**
      * Source Maps
