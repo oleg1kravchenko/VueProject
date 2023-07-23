@@ -25,8 +25,8 @@
               <div>+300000000</div>
             </li>
             <li v-for="itemUser in users">
-             <div><strong> {{ itemUser.name }}</strong></div>
-             <div> {{ itemUser.phone }}</div>
+              <div><strong> {{ itemUser.name }}</strong></div>
+              <div> {{ itemUser.phone }}</div>
             </li>
           </ul>
         </div>
@@ -103,21 +103,21 @@
     components: {
       team, SliderSection, news
     },
-   methods: {
-    addUser() {
-      const newUser = {
-        id: Date.now(),
-        name: this.name,
-        phone: this.phone,
+    methods: {
+      addUser() {
+        const newUser = {
+          id: Date.now(),
+          name: this.name,
+          phone: this.phone,
+        }
+        this.users.push(newUser);
+        this.name = "";
+        this.phone = "";
+      },
+      inputName(event) {
+        this.name = event.target.value;
       }
-      this.users.push(newUser);
-      this.name = "";
-      this.phone = "";
-    },
-    inputName(event) {
-     this.name = event.target.value; 
     }
-   }
   }
 
 </script>
@@ -148,9 +148,10 @@
     background-color: #000;
     color: #fff;
   }
+
   .billbord {
     min-height: 100vh;
-    padding: 200px;
+    padding: 200px 0;
     color: #fff;
     background-image: url(../assets/Forest.jpg);
     background-repeat: no-repeat;
@@ -158,21 +159,32 @@
     background-size: cover;
     background-attachment: fixed;
   }
+
   .title-big {
     font-size: 60px;
     text-shadow: 0 2px 7px #606060;
   }
+
   .descr-big {
     font-size: 30px;
     text-shadow: 0 2px 7px #606060;
   }
+
   .billbord .btn-main {
     margin-top: 40px;
   }
+
   .clients-list li {
     margin-bottom: 10px;
   }
-  
 
+  @media only screen and (max-width : 992px) {
+    .title-big {
+      font-size: 42px;
+    }
 
+    .descr-big {
+      font-size: 20px;
+    }
+  }
 </style>

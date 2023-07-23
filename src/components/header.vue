@@ -326,4 +326,16 @@ import $ from "jquery";
   .header__left .logo {
     margin-right: 10px;
   }
+
+  
+  @media only screen and (max-width : 992px) {
+    .header__right .line-contacts,
+    .location-main,
+    .menu {
+      display: none;
+    }
+    .header {
+      padding: 10px 0;
+    }
+  }
 </style>

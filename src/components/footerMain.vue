@@ -69,4 +69,9 @@
     text-transform: uppercase;
     font-weight: 800;
   }
+  .logo img {
+    width: 75px;
+    max-width: 100%;
+    height: auto;
+}
 </style>

@@ -74,4 +74,9 @@
     .slick-next:before {
         color: #000;
     }
+    @media only screen and (max-width : 992px) {
+    .section-gallery .slick-arrow {
+      display: none !important;
+    }
+  }
 </style>
