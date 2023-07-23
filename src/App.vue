@@ -80,7 +80,7 @@ export default {
   color: #2c3e50;
 }
 a {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 ul {
   padding: 0;
