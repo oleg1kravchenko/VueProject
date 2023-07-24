@@ -52,7 +52,7 @@
 <style scoped>
   .footer {
     padding: 40px 0;
-    background-color: #000;
+    background-color: #242424;
     color: #fff;
   }
 
@@ -73,5 +73,11 @@
     width: 75px;
     max-width: 100%;
     height: auto;
+}
+@media only screen and (max-width : 992px) {
+  .footer .logo {
+    display: inline-block;
+    margin-bottom: 15px;
+  }
 }
 </style>

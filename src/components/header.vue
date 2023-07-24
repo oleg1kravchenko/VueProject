@@ -1,40 +1,50 @@
 <template>
-    <header class="header default" v-on:click="addClass">
-        <div class="container">
-          <div class="header__wrapper">
-            <div class="header__left">
-                <span class='sandwich' :class="{ active: sandwichClick }"
-                @click="sandwichClick = !sandwichClick">
-                    <span class='sw-topper'></span>
-                    <span class='sw-bottom'></span>
-                    <span class='sw-footer'></span>
-                </span>
-              <a href="/" class="logo">
-                <img v-bind:src="logo" alt="alt">
-              </a>
-              <div class="location-main">{{locationMain}}</div>
-            </div>
-            <ul class="menu">
-              <li v-for="itemMenu in menu">
-                <a :href="itemMenu.link">{{itemMenu.title}}</a>
-              </li>
-            </ul>
-            <div class="header__right">
-              <div class="line-contacts">
-                <a :href="phoneMain" class="phone-main">{{ phoneMain }}</a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-              </div>
-              <a href="#" class="btn-main btn-main_white">Contact us</a>
-            </div>
-          </div>
+  <header class="header default" v-on:click="addClass">
+    <div class="container">
+      <div class="header__wrapper">
+        <div class="header__left">
+          <span class='sandwich' :class="{ active: sandwichClick }" @click="sandwichClick = !sandwichClick">
+            <span class='sw-topper'></span>
+            <span class='sw-bottom'></span>
+            <span class='sw-footer'></span>
+          </span>
+          <a href="VueProject" class="logo">
+            <img v-bind:src="logo" alt="alt">
+          </a>
+          <div class="location-main">{{locationMain}}</div>
         </div>
-      </header>
+        <ul class="menu">
+          <li v-for="itemMenu in menu">
+            <a :href="itemMenu.link">{{itemMenu.title}}</a>
+          </li>
+        </ul>
+        <div class="header__right">
+          <div class="line-contacts">
+            <a :href="phoneMain" class="phone-main">{{ phoneMain }}</a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+          <a href="#" class="btn-main btn-main_white">Contact us</a>
+        </div>
+      </div>
+    </div>
+    <div class="menu-mobile">
+      <ul class="menu">
+        <li v-for="itemMenu in menu">
+          <a :href="itemMenu.link">{{itemMenu.title}}</a>
+        </li>
+      </ul>
+      <div class="line-contacts">
+        <a :href="phoneMain" class="phone-main">{{ phoneMain }}</a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </header>
 
 </template>
 
 <script>
-import $ from "jquery";
-  
+  import $ from "jquery";
+
   export default {
     name: 'headerMain',
     data() {
@@ -44,38 +54,54 @@ import $ from "jquery";
         sandwichClick: false,
         phoneMain: "+0 (000) 000-00-00",
         menu: [
-          { title: "About", link: "#/about"},
-          { title: "Team", link: "#/team"},
-          { title: "News", link: "#/news"},
-          { title: "Contacts", link: "#/contacts"},
+          { title: "About", link: "#/about" },
+          { title: "Team", link: "#/team" },
+          { title: "News", link: "#/news" },
+          { title: "Contacts", link: "#/contacts" },
         ],
       }
     },
     methods: {
       addClass() {
-       // $(".header").fadeOut(0);
+        // $(".header").fadeOut(0);
       }
     },
     mounted() {
       //прилипающие меню
       var $menu = $(".header");
-      $(window).scroll(function(){
-        if ( $(this).scrollTop() > 0 && $menu.hasClass("default") ){
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 0 && $menu.hasClass("default")) {
           $menu.removeClass("default").addClass("fixed");
-        } else if($(this).scrollTop() <= 0 && $menu.hasClass("fixed")) {
+        } else if ($(this).scrollTop() <= 0 && $menu.hasClass("fixed")) {
           $menu.removeClass("fixed").addClass("default");
         }
 
       });
 
-      if ( $(this).scrollTop() > 0 && $menu.hasClass("default") ){
+      if ($(this).scrollTop() > 0 && $menu.hasClass("default")) {
         $menu.removeClass("default").addClass("fixed");
-      } else if($(this).scrollTop() <= 0 && $menu.hasClass("fixed")) {
+      } else if ($(this).scrollTop() <= 0 && $menu.hasClass("fixed")) {
         $menu.removeClass("fixed").addClass("default");
       }
+
+      $(".sandwich").click(function () {
+        if ($(".menu-mobile").is(":hidden")) {
+          $(".menu-mobile").slideDown(200);
+          $(".header").addClass("active");
+        } else {
+          $(".menu-mobile").slideUp(200);
+          $(".header").removeClass("active");
+        }
+      });
+
+      $(".menu-mobile .menu li a").click(function() {
+		$(".menu-mobile").slideUp(200);
+		$(".sandwich").removeClass("active");
+		$(".header").removeClass("active");
+	});
     }
   }
-  
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -140,6 +166,7 @@ import $ from "jquery";
   .menu {
     display: flex;
     align-items: center;
+    margin: 0;
   }
 
   .menu li {
@@ -230,14 +257,14 @@ import $ from "jquery";
   .sandwich {
     width: 39px;
     height: 39px;
-    margin-right: 40px;
+    margin-right: 30px;
     padding-top: 10px;
     border-radius: 50%;
     display: -webkit-flex;
     display: -moz-flex;
     display: -ms-flex;
     display: -o-flex;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     z-index: 20;
@@ -327,15 +354,56 @@ import $ from "jquery";
     margin-right: 10px;
   }
 
-  
+
   @media only screen and (max-width : 992px) {
+
     .header__right .line-contacts,
     .location-main,
     .menu {
       display: none;
     }
+
     .header {
       padding: 10px 0;
+    }
+    .menu-mobile {
+		width: 100%;
+		top: 100%;
+		left: 0;
+		height: 100vh;
+		padding: 15px 15px;
+		padding-bottom: 120px;
+		display: none;
+		overflow: auto;
+		background-color: #242424;
+		position: absolute;
+	}
+	.menu a {
+		margin: 0;
+		padding: 15px 10px;
+		display: block;
+		position: relative;
+		border-bottom: 1px solid #fff;
+	}
+	.menu-mobile .menu {
+		display: block;
+		margin: 0;
+    padding: 0;
+		margin-bottom: 20px;
+	}
+  .menu-mobile .menu li {
+    padding: 0;
+  }
+  .header.active {
+    background-color: #242424;
+  }
+  .sandwich {
+    display: flex;
+  }
+  }
+  @media only screen and (min-width : 992px) {
+    .menu-mobile {
+      display: none !important;
     }
   }
 </style>

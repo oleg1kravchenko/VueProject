@@ -12,7 +12,7 @@
         </li>
       </ul>
       <div class="row row_team">
-        <div class="col-lg-4" v-for="itemTeam in filteredPeople">
+        <div class="col-lg-4 col-6" v-for="itemTeam in filteredPeople">
           <div class="item-team">
             <div class="item-team__image">
               <img :src="itemTeam.photo" alt="alt">
@@ -34,11 +34,11 @@
     data() {
       return {
         team: [
+        { name: "Sasha", age: 44, text: 'secretary', photo: require('../assets/team3.jpg'), isAvailable: "busy", statusTeam: false },
           { name: "Oleg", age: 25, text: 'Hello everyone! I am one', photo: require('../assets/team1.jpg'), isAvailable: "free", statusTeam: true },
-          { name: "Dima", age: 45, text: 'Chief', photo: require('../assets/team2.jpg'), isAvailable: "free", statusTeam: true },
-          { name: "Sasha", age: 44, text: 'secretary', photo: require('../assets/team3.jpg'), isAvailable: "busy", statusTeam: false },
-          { name: "Serg", age: 22, text: 'Hello there', photo: require('../assets/team4.jpg'), isAvailable: "free", statusTeam: true },
           { name: "Kiter", age: 14, text: 'Bye!', photo: require('../assets/team2.jpg'), isAvailable: "busy", statusTeam: false },
+          { name: "Dima", age: 45, text: 'Chief', photo: require('../assets/team2.jpg'), isAvailable: "free", statusTeam: true },
+          { name: "Serg", age: 22, text: 'Hello there', photo: require('../assets/team4.jpg'), isAvailable: "free", statusTeam: true },
           { name: "Andrey", age: 66, text: 'Team-lead', photo: require('../assets/team3.jpg'), isAvailable: "busy", statusTeam: false }
         ],
         selectedAvailable: "All"
@@ -101,6 +101,16 @@
     position: relative;
   }
 
+  .item-team__image img {
+    max-width: 100%;
+    margin: 0 auto;
+    height: auto;
+  }
+
+  .item-team__image {
+    margin-bottom: 15px;
+  }
+
   .status {
     width: 20px;
     height: 20px;
@@ -129,5 +139,13 @@
     box-shadow: 0 5px 15px #dadada;
     border-radius: 9px;
     min-height: 100%;
+  }
+  @media only screen and (max-width : 992px) {
+    .row_team {
+      margin: 0 -7px;
+    }
+    .row_team > div {
+      padding: 0 7px;
+    }
   }
 </style>

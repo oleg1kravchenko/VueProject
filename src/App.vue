@@ -133,5 +133,15 @@ ul {
 .section-news {
 	padding-bottom: 30px;
 }
+.page-top img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+@media only screen and (max-width : 992px) {
+	.page-top {
+    padding-top: 110px;
+	}
+}
 
 </style>
