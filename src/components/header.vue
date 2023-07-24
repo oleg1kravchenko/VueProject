@@ -3,12 +3,12 @@
     <div class="container">
       <div class="header__wrapper">
         <div class="header__left">
-          <span class='sandwich' :class="{ active: sandwichClick }" @click="sandwichClick = !sandwichClick">
+          <span class='sandwich'>
             <span class='sw-topper'></span>
             <span class='sw-bottom'></span>
             <span class='sw-footer'></span>
           </span>
-          <a href="VueProject" class="logo">
+          <a href="#" class="logo">
             <img v-bind:src="logo" alt="alt">
           </a>
           <div class="location-main">{{locationMain}}</div>
@@ -51,7 +51,7 @@
       return {
         logo: require('../assets/logo.svg'),
         locationMain: "New York, Union City",
-        sandwichClick: false,
+        //sandwichClick: false,
         phoneMain: "+0 (000) 000-00-00",
         menu: [
           { title: "About", link: "#/about" },
@@ -88,17 +88,19 @@
         if ($(".menu-mobile").is(":hidden")) {
           $(".menu-mobile").slideDown(200);
           $(".header").addClass("active");
+          $(".sandwich").addClass("active");
         } else {
           $(".menu-mobile").slideUp(200);
           $(".header").removeClass("active");
+          $(".sandwich").removeClass("active");
         }
       });
 
-      $(".menu-mobile .menu li a").click(function() {
-		$(".menu-mobile").slideUp(200);
-		$(".sandwich").removeClass("active");
-		$(".header").removeClass("active");
-	});
+      $(".menu-mobile .menu li a").click(function () {
+        $(".menu-mobile").slideUp(200);
+        $(".sandwich").removeClass("active");
+        $(".header").removeClass("active");
+      });
     }
   }
 
@@ -366,41 +368,48 @@
     .header {
       padding: 10px 0;
     }
+
     .menu-mobile {
-		width: 100%;
-		top: 100%;
-		left: 0;
-		height: 100vh;
-		padding: 15px 15px;
-		padding-bottom: 120px;
-		display: none;
-		overflow: auto;
-		background-color: #242424;
-		position: absolute;
-	}
-	.menu a {
-		margin: 0;
-		padding: 15px 10px;
-		display: block;
-		position: relative;
-		border-bottom: 1px solid #fff;
-	}
-	.menu-mobile .menu {
-		display: block;
-		margin: 0;
-    padding: 0;
-		margin-bottom: 20px;
-	}
-  .menu-mobile .menu li {
-    padding: 0;
+      width: 100%;
+      top: 100%;
+      left: 0;
+      height: 100vh;
+      padding: 15px 15px;
+      padding-bottom: 120px;
+      display: none;
+      overflow: auto;
+      background-color: #242424;
+      position: absolute;
+    }
+
+    .menu a {
+      margin: 0;
+      padding: 15px 10px;
+      display: block;
+      position: relative;
+      border-bottom: 1px solid #fff;
+    }
+
+    .menu-mobile .menu {
+      display: block;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+
+    .menu-mobile .menu li {
+      padding: 0;
+    }
+
+    .header.active {
+      background-color: #242424;
+    }
+
+    .sandwich {
+      display: flex;
+    }
   }
-  .header.active {
-    background-color: #242424;
-  }
-  .sandwich {
-    display: flex;
-  }
-  }
+
   @media only screen and (min-width : 992px) {
     .menu-mobile {
       display: none !important;
