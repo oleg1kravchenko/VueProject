@@ -1,29 +1,29 @@
 <template>
   <div>
-      <ul class="tabs">
-        <li>
-          <label><input type="radio" v-model="selectedAvailable" value="All" /> <span>All</span></label>
-        </li>
-        <li>
-          <label><input type="radio" v-model="selectedAvailable" value="free" /> <span>Free</span></label>
-        </li>
-        <li>
-          <label><input type="radio" v-model="selectedAvailable" value="busy" /> <span>Busy</span></label>
-        </li>
-      </ul>
-      <div class="row row_team">
-        <div class="col-lg-4 col-6" v-for="itemTeam in filteredPeople">
-          <div class="item-team">
-            <div class="item-team__image">
-              <img :src="itemTeam.photo" alt="alt">
-            </div>
-            <div class="item-team__name">Name: {{itemTeam.name}}</div>
-            <div class="item-team__age">Age: {{itemTeam.age}}</div>
-            <div class="item-team__text">{{itemTeam.text}}</div>
-            <div class='status' :class="{ active: itemTeam.statusTeam }"></div>
+    <ul class="tabs">
+      <li>
+        <label><input type="radio" v-model="selectedAvailable" value="All" /> <span>All</span></label>
+      </li>
+      <li>
+        <label><input type="radio" v-model="selectedAvailable" value="free" /> <span>Free</span></label>
+      </li>
+      <li>
+        <label><input type="radio" v-model="selectedAvailable" value="busy" /> <span>Busy</span></label>
+      </li>
+    </ul>
+    <div class="row row_team">
+      <div class="col-lg-4 col-6" v-for="itemTeam in filteredPeople">
+        <div class="item-team">
+          <div class="item-team__image">
+            <img :src="itemTeam.photo" alt="alt">
           </div>
+          <div class="item-team__name">Name: {{itemTeam.name}}</div>
+          <div class="item-team__age">Age: {{itemTeam.age}}</div>
+          <div class="item-team__text">{{itemTeam.text}}</div>
+          <div class='status' :class="{ active: itemTeam.statusTeam }"></div>
         </div>
       </div>
+    </div>
   </div>
 
 </template>
@@ -34,7 +34,7 @@
     data() {
       return {
         team: [
-        { name: "Sasha", age: 44, text: 'secretary', photo: require('../assets/team3.jpg'), isAvailable: "busy", statusTeam: false },
+          { name: "Sasha", age: 44, text: 'secretary', photo: require('../assets/team3.jpg'), isAvailable: "busy", statusTeam: false },
           { name: "Oleg", age: 25, text: 'Hello everyone! I am one', photo: require('../assets/team1.jpg'), isAvailable: "free", statusTeam: true },
           { name: "Kiter", age: 14, text: 'Bye!', photo: require('../assets/team2.jpg'), isAvailable: "busy", statusTeam: false },
           { name: "Dima", age: 45, text: 'Chief', photo: require('../assets/team2.jpg'), isAvailable: "free", statusTeam: true },
@@ -57,8 +57,9 @@
             console.log(itemTeam.isAvailable)
           });
         }
-      }
+      },
     }
+
   }
 </script>
 
@@ -91,8 +92,9 @@
     padding: 0;
     transition: all 0.3s;
   }
+
   .tabs label>span:hover,
-  .tabs label input:checked + span {
+  .tabs label input:checked+span {
     color: green;
     border-bottom: 1px green solid;
   }
@@ -140,11 +142,13 @@
     border-radius: 9px;
     min-height: 100%;
   }
+
   @media only screen and (max-width : 992px) {
     .row_team {
       margin: 0 -7px;
     }
-    .row_team > div {
+
+    .row_team>div {
       padding: 0 7px;
     }
   }

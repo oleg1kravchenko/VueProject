@@ -7,6 +7,7 @@
         <a href="#" class="btn-main">Make a project</a>
       </div>
     </section>
+    <aboutPage></aboutPage>
     <div class="container">
       <div class="title-section">Clients list</div>
       <div class="row">
@@ -67,7 +68,10 @@
     </section>
     <section class="section-news">
       <div class="container">
-        <h2 class="title-section">News</h2>
+        <div class="head-section">
+          <h2 class="title-section">News</h2>
+          <a href="#/news" class="btn-main">More news</a>
+        </div>
         <news></news>
       </div>
     </section>
@@ -81,7 +85,7 @@
   import team from "@/components/team.vue";
   import SliderSection from "@/components/SliderSection.vue";
   import news from "@/components/news.vue";
-
+  import aboutPage from "@/pages/aboutPage.vue";
 
 
   export default {
@@ -101,7 +105,7 @@
       }
     },
     components: {
-      team, SliderSection, news
+      team, SliderSection, news, aboutPage
     },
     methods: {
       addUser() {
@@ -117,7 +121,7 @@
       inputName(event) {
         this.name = event.target.value;
       }
-    }
+    },
   }
 
 </script>
@@ -177,6 +181,15 @@
   .clients-list li {
     margin-bottom: 10px;
   }
+  .billbord + .page-about {
+    padding-top: 60px;
+  }
+  .head-section {
+    padding-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   @media only screen and (max-width : 992px) {
     .title-big {
@@ -185,6 +198,12 @@
 
     .descr-big {
       font-size: 20px;
+    }
+    .head-section {
+      display: block;
+    }
+    .head-section .btn-main {
+      margin-top: 15px;
     }
   }
 </style>

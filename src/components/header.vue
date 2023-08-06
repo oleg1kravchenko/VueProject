@@ -8,7 +8,7 @@
             <span class='sw-bottom'></span>
             <span class='sw-footer'></span>
           </span>
-          <a href="#" class="logo">
+          <a href="/" class="logo">
             <img v-bind:src="logo" alt="alt">
           </a>
           <div class="location-main">{{locationMain}}</div>
@@ -45,6 +45,7 @@
 <script>
   import $ from "jquery";
 
+
   export default {
     name: 'headerMain',
     data() {
@@ -59,6 +60,7 @@
           { title: "News", link: "#/news" },
           { title: "Contacts", link: "#/contacts" },
         ],
+        active: true,
       }
     },
     methods: {
@@ -83,7 +85,7 @@
       } else if ($(this).scrollTop() <= 0 && $menu.hasClass("fixed")) {
         $menu.removeClass("fixed").addClass("default");
       }
-
+      
       $(".sandwich").click(function () {
         if ($(".menu-mobile").is(":hidden")) {
           $(".menu-mobile").slideDown(200);
@@ -95,6 +97,7 @@
           $(".sandwich").removeClass("active");
         }
       });
+
 
       $(".menu-mobile .menu li a").click(function () {
         $(".menu-mobile").slideUp(200);

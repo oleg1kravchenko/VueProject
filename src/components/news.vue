@@ -45,10 +45,23 @@
         this.posts.push(post);
 
       },
+      numbers() {
+
+
+      },
       async fetchPosts() {
+        var nws;
+        if (this.$route.name == "frontPage") {
+          nws = 3
+        } else {
+          nws = 9
+        }
         try {
+
           setTimeout(async () => {
-            const response = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=9');
+
+
+            const response = await axios.get('https://jsonplaceholder.typicode.com/posts?_limit=' + nws);
             this.posts = response.data;
             this.isPostLoading = true;
           }, 1000)
@@ -59,18 +72,18 @@
         }
       },
       addNews() {
-      const newNews = {
-        id: Date.now(),
-        title: this.title,
-        body: this.body,
+        const newNews = {
+          id: Date.now(),
+          title: this.title,
+          body: this.body,
+        }
+        this.posts.push(newNews);
+        this.title = "";
+        this.body = "";
+      },
+      inputTitle(event) {
+        this.title = event.target.value;
       }
-      this.posts.push(newNews);
-      this.title = "";
-      this.body = "";
-    },
-    inputTitle(event) {
-     this.title = event.target.value; 
-    }
     },
     mounted() {
       this.fetchPosts();
@@ -87,6 +100,7 @@
     text-transform: uppercase;
     font-weight: 700;
   }
+
   .item-blog {
     padding: 20px;
     box-shadow: 0 5px 15px #dadada;
@@ -96,7 +110,8 @@
     flex-direction: column;
     align-items: flex-start;
   }
-  .row_blog > div {
+
+  .row_blog>div {
     margin-bottom: 20px;
   }
 </style>

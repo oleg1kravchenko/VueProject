@@ -1,23 +1,21 @@
 <template>
-    <div>
-        <section class="page-top page-about">
-            <div class="container">
-                <h1>{{ title }}</h1>
-                <div class="row">
-                    <div class="col-lg-7">
-                        <p>{{ text }}</p>
-                    </div>
-                    <div class="col-lg-5">
-                        <img :src="image" alt="alt">
-                    </div>
+    <section class="page-top page-about">
+        <div class="container">
+            <h1>{{ title }}</h1>
+            <div class="row">
+                <div class="col-lg-7">
+                    <p>{{ text }}</p>
+                </div>
+                <div class="col-lg-5">
+                    <img :src="image" alt="alt">
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 </template>
 
 <script>
-    
+
     export default {
         name: 'aboutPage',
         data() {
