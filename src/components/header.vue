@@ -1,5 +1,5 @@
 <template>
-  <header class="header default" v-on:click="addClass">
+  <header class="header default" v-on:click="addClass" id="header">
     <div class="container">
       <div class="header__wrapper">
         <div class="header__left">
@@ -104,7 +104,7 @@
         $(".sandwich").removeClass("active");
         $(".header").removeClass("active");
       });
-    }
+    },
   }
 
 </script>
@@ -357,6 +357,9 @@
 
   .header__left .logo {
     margin-right: 10px;
+  }
+  .header.header_page {
+    background-color: #000;
   }
 
 

@@ -19,7 +19,10 @@ export default {
      headerMain, footerMain
   },
   name: 'App',
-   
+  methods: {
+	
+  },
+ 
 }
 
 
@@ -138,6 +141,17 @@ ul {
 	margin: 0 auto;
 	height: auto;
 	display: block;
+}
+.list-main li {
+	padding-left: 15px;
+	position: relative;
+	margin-bottom: 10px;
+}
+.list-main li::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: "•";
 }
 @media only screen and (max-width : 992px) {
 	.page-top {

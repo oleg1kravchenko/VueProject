@@ -1,14 +1,19 @@
 <template>
   <div>
     <div class="row row_blog" v-if="isPostLoading">
-      <div class="col-lg-4 col-md-6" v-for="itemBlog in posts">
+      <div class="col-lg-4 col-md-6" v-for="itemBlog in visiblePosts">
         <div class="item-blog">
           <div class="item-blog__title">{{ itemBlog.title }}</div>
           <p>{{ itemBlog.body }}</p>
         </div>
       </div>
+      
     </div>
     <div v-else>Идет загрузка...</div>
+    <div class="button-wrapper">
+      <button @click="postsVisible += step" v-if="postsVisible < posts.length" class="btn-main">Load more...</button>
+    </div>
+
     <div class="row row_form">
       <div class="col-lg-6 offset-lg-3">
         <div class="block-form">
@@ -37,20 +42,17 @@
     data() {
       return {
         posts: [],
+        postsVisible: 3,
+        step: 3,
         isPostLoading: false,
       }
     },
     methods: {
-      createPost(post) {
-        this.posts.push(post);
-
-      },
-      numbers() {
-
-
-      },
       async fetchPosts() {
         var nws;
+        this.title = "";
+        this.body = "";
+
         if (this.$route.name == "frontPage") {
           nws = 3
         } else {
@@ -77,9 +79,20 @@
           title: this.title,
           body: this.body,
         }
-        this.posts.push(newNews);
-        this.title = "";
-        this.body = "";
+
+
+
+        if (this.title === '' & this.body === '') {
+
+          alert("Please fill the fields");
+
+        } else {
+
+          this.posts.push(newNews);
+
+          this.title = "";
+          this.body = "";
+        };
       },
       inputTitle(event) {
         this.title = event.target.value;
@@ -87,7 +100,12 @@
     },
     mounted() {
       this.fetchPosts();
+    },
+    computed: {
+    visiblePosts() {
+      return this.posts.slice(0, this.postsVisible)
     }
+  }
   }
 </script>
 
@@ -113,5 +131,9 @@
 
   .row_blog>div {
     margin-bottom: 20px;
+  }
+  .button-wrapper {
+    padding-bottom: 25px;
+    text-align: center;
   }
 </style>

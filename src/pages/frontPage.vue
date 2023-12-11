@@ -122,6 +122,9 @@
         this.name = event.target.value;
       }
     },
+    mounted() {
+     
+    }
   }
 
 </script>

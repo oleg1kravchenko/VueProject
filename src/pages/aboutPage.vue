@@ -5,6 +5,9 @@
             <div class="row">
                 <div class="col-lg-7">
                     <p>{{ text }}</p>
+                    <ul class="list-main" v-for="itemList in listAbout">
+                        <li>{{ itemList }}</li>
+                    </ul>
                 </div>
                 <div class="col-lg-5">
                     <img :src="image" alt="alt">
@@ -22,7 +25,18 @@
             return {
                 title: "About page",
                 text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                image: require("../assets/course3.jpg")
+                image: require("../assets/course3.jpg"),
+                listAbout: [
+                    "Lorem ipsum dolor sit amet",
+                    "consectetur adipiscing elit",
+                    "sed do eiusmod tempor incididunt ut labore",
+                    "Lorem ipsum dolor sit amet",
+                    "consectetur adipiscing elit",
+                    "sed do eiusmod tempor incididunt ut labore",
+                    "Lorem ipsum dolor sit amet",
+                    "consectetur adipiscing elit",
+                    "sed do eiusmod tempor incididunt ut labore",
+                ],
 
             }
         }

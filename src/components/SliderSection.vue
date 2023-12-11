@@ -33,7 +33,7 @@
                                 "slidesToShow": 1,
                             }
                         }
-                    ]
+                    ],
                 },
                 photos: [
                     { slidePhoto: require('../assets/gallery1.jpg') },
@@ -74,9 +74,10 @@
     .slick-next:before {
         color: #000;
     }
+
     @media only screen and (max-width : 992px) {
-    .section-gallery .slick-arrow {
-      display: none !important;
+        .section-gallery .slick-arrow {
+            display: none !important;
+        }
     }
-  }
 </style>
