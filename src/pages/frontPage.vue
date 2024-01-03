@@ -4,11 +4,16 @@
       <div class="container">
         <h1 class="title-big">{{ msg }}</h1>
         <h2 class="descr-big">{{ text }}</h2>
-        <a href="#" class="btn-main">Make a project</a>
+        <ButtonMain  
+        style="margin-top: 20px;"
+        @click-event="scrollToElement"
+        >
+        Make a project
+      </ButtonMain>
       </div>
     </section>
     <aboutPage></aboutPage>
-    <div class="container">
+    <div class="container" ref="targetRef">
       <div class="title-section">Clients list</div>
       <div class="row">
         <div class="col-lg-8">
@@ -35,10 +40,10 @@
           <div class="block-form">
             <form @submit.prevent>
               <div class="item-form">
-                <input type="text" v-bind:value="name" @input="inputName" placeholder="Name">
+                <input type="text" v-bind:value="name" required="required" @input="inputName" placeholder="Name">
               </div>
               <div class="item-form">
-                <input type="text" v-bind:value="phone" @input="phone = $event.target.value" placeholder="Phone">
+                <input type="text" v-bind:value="phone" required="required" @input="phone = $event.target.value" placeholder="Phone">
               </div>
               <button class="btn-main" @click="addUser">add new client</button>
             </form>
@@ -86,6 +91,7 @@
   import SliderSection from "@/components/SliderSection.vue";
   import news from "@/components/news.vue";
   import aboutPage from "@/pages/aboutPage.vue";
+  import ButtonMain from "@/components/UI/ButtonMain.vue";
 
 
   export default {
@@ -105,7 +111,7 @@
       }
     },
     components: {
-      team, SliderSection, news, aboutPage
+      team, SliderSection, news, aboutPage, ButtonMain
     },
     methods: {
       addUser() {
@@ -120,6 +126,9 @@
       },
       inputName(event) {
         this.name = event.target.value;
+      },
+      scrollToElement() {
+        this.$refs.targetRef.scrollIntoView({ behavior: 'smooth' });
       }
     },
     mounted() {
